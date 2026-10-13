@@ -8,8 +8,18 @@ dotenv.config();
 @Controller('osrm')
 export class OSRMController {
   constructor(private readonly osrm: OSRMService) {}
-  @Get('/directions/:coordinates')
+  @Get('/route/:coordinates')
   getDirections(@Param('coordinates') coordinates: string) {
-    return this.osrm.getDirections(coordinates);
+    return this.osrm.getDrivingRoute(coordinates);
+  }
+
+  @Get('/trip/:coordinates')
+  getTrip(@Param('coordinates') coordinates: string) {
+    return this.osrm.getTrip(coordinates);
+  }
+
+  @Get('/matrix/:coordinates')
+  getMatrix(@Param('coordinates') coordinates: string) {
+    return this.osrm.getDistanceMatrix(coordinates);
   }
 }

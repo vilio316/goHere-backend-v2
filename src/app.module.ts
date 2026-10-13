@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { auth } from './auth';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
 import { OSRMMoudle } from './osrm-directions/osrm.module';
+import AIModule from './ai-gateway/ai.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { OSRMMoudle } from './osrm-directions/osrm.module';
     }),
 
     OSRMMoudle,
+    AIModule,
   ],
   controllers: [AppController],
   providers: [AppService],
