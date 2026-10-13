@@ -1,16 +1,19 @@
 import { Injectable } from '@nestjs/common';
-
+import dotenv from 'dotenv';
+dotenv.config();
 @Injectable()
 export default class OSRMService {
-  async getDirections() {
-    const request = await fetch('');
+  async getDirections(coordinates: string) {
+    const request = await fetch(
+      `${process.env.ROUTING_BASE_URL}/api/osrm/route/v1/driving/${coordinates}?geometries=polyline`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-KEY': String(process.env.ROUTING_GATEWAY_API_KEY) ?? '',
+        },
+      },
+    );
     const response = await request.json();
-    if (!response)
-      return {
-        message: "Oops. We're not getting a valid response for that right now!",
-      };
-    return {
-      response,
-    };
+    return response;
   }
 }
