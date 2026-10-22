@@ -14,4 +14,13 @@ export default class NominatimService {
         throw new BadRequestException('Bad Request');
     }
   }
+
+  async getReverse(lat: number, lon: number) {
+    try {
+      const { data } = await this.http.get(`/reverse?lat=${lat}&lon=${lon}&format=json&extratags=1`);
+      return data;
+    } catch (error) {
+      if (error instanceof HttpResponseError && error.status === 400)
+        throw new BadRequestException('Bad Request');
+    }}
 }

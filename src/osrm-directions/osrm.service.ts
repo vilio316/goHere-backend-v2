@@ -12,7 +12,7 @@ export default class OSRMService {
   async getDrivingRoute(coordinates: string) {
     try {
       const { data } = await this.http.get(
-        `/api/osrm/route/v1/driving/${coordinates}`,
+        `/api/osrm/route/v1/driving/${coordinates}?steps=true&geometries=geojson`,
       );
       return data;
     } catch (error) {

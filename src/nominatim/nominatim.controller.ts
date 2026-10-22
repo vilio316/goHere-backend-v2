@@ -11,4 +11,9 @@ export default class NominatimController {
   getByQuery(@Param('query') query: string) {
     return this.nomina.searchNomina(query);
   }
+
+  @Get("/reverse/:lat/:lon")
+  getReverse(@Param( 'lat') lat: number, @Param('lon') lon: number) {
+    return this.nomina.getReverse(lat, lon);
+  }
 }
