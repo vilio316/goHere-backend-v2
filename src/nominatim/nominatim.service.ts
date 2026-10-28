@@ -7,7 +7,7 @@ export default class NominatimService {
 
   async searchNomina(query: string) {
     try {
-      const { data } = await this.http.get(`/search?q=${query}`);
+      const { data } = await this.http.get(`/search?q=${query}&extratags=1&addressdetails=1&format=json`);
       return data;
     } catch (error) {
       if (error instanceof HttpResponseError && error.status === 400)
@@ -23,4 +23,13 @@ export default class NominatimService {
       if (error instanceof HttpResponseError && error.status === 400)
         throw new BadRequestException('Bad Request');
     }}
-}
+
+  async getLookup(osm_id: number) {
+    try {
+      const { data } = await this.http.get(`/lookup?osm_ids=N${osm_id}&format=json&extratags=1`);
+      return data;
+    } catch (error) {
+      if (error instanceof HttpResponseError && error.status === 400)
+        throw new BadRequestException('Bad Request');
+    }
+}}

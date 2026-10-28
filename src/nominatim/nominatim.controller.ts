@@ -16,4 +16,8 @@ export default class NominatimController {
   getReverse(@Param( 'lat') lat: number, @Param('lon') lon: number) {
     return this.nomina.getReverse(lat, lon);
   }
-}
+  
+  @Get("/lookup/:osm_id")
+  getLookup(@Param('osm_id') osm_id: number) {
+    return this.nomina.getLookup(osm_id);
+  }}
