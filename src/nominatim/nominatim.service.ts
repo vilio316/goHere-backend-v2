@@ -26,7 +26,7 @@ export default class NominatimService {
 
   async getLookup(osm_id: number) {
     try {
-      const { data } = await this.http.get(`/lookup?osm_ids=N${osm_id}&format=json&extratags=1`);
+      const { data } = await this.http.get(`/lookup?osm_ids=N${osm_id},W${osm_id},R${osm_id}&format=json&extratags=1`);
       return data;
     } catch (error) {
       if (error instanceof HttpResponseError && error.status === 400)
