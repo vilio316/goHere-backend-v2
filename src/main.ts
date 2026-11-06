@@ -12,6 +12,7 @@ async function bootstrap() {
       'http://localhost:3000',
       'https://frontend.pilot.gohere-app.xyz',
       'https://api.gohere-app.xyz',
+      "https://gohere-app.xyz",
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
