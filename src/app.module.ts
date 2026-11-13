@@ -6,6 +6,7 @@ import { AuthModule } from '@thallesp/nestjs-better-auth';
 import { OSRMMoudle } from './osrm-directions/osrm.module';
 import AIModule from './ai-gateway/ai.module';
 import NominatimModule from './nominatim/nominatim.module';
+import { SaveLocationsModule } from './save-locations/save-locations.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import NominatimModule from './nominatim/nominatim.module';
     OSRMMoudle,
     AIModule,
     NominatimModule,
+    SaveLocationsModule
   ],
   controllers: [AppController],
   providers: [AppService],

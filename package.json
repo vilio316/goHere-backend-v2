@@ -22,6 +22,7 @@
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.7.7",
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^12.1.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/http-client": "^0.0.2",
     "@nestjs/platform-express": "^11.0.1",

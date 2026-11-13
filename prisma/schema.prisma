@@ -14,15 +14,16 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String
-  emailVerified Boolean   @default(false)
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
+  id             String           @id
+  name           String
+  email          String
+  emailVerified  Boolean          @default(false)
+  image          String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  sessions       Session[]
+  accounts       Account[]
+  savedLocations SavedLocations[]
 
   @@unique([email])
   @@map("user")
@@ -78,4 +79,12 @@ model Verification {
   @@index([identifier])
   @@map("verification")
   @@schema("auth")
+}
+
+model SavedLocations {
+  userId    String @id
+  locations Json  @default("[]")
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@schema("app")
 }

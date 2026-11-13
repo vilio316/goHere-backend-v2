@@ -13,6 +13,21 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          // Create a new entry in the savedLocations table for the new user
+          await prisma.savedLocations.create({
+            data: {
+              userId: user.id,
+              locations: [],
+            },
+          });
+        }
+      }
+    }
+  },
   advanced: {
     disableOriginCheck: true,
   },
